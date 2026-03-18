@@ -1,1 +1,75 @@
-# threat-intel-dashboard
+# Threat Intelligence Dashboard
+
+Herramienta en Python para enriquecimiento de direcciones IP mediante fuentes de *threat intelligence*, combinando reputación, geolocalización y scoring básico de riesgo.
+
+El proyecto incluye tanto una **CLI** como un **dashboard interactivo** para analizar actividad sospechosa de forma sencilla.
+
+---
+
+## Características
+
+- Consulta de reputación de IPs mediante APIs públicas  
+- Geolocalización (país, ciudad, ISP, ASN)  
+- Detección básica de actividad maliciosa  
+- Scoring de riesgo personalizado  
+- Interfaz CLI  
+- Dashboard interactivo con Streamlit  
+
+## Instalación
+
+1.  Clonar el entorno
+    ```bash
+    git clone https://github.com/tu-usuario/threat-intel-dashboard.git
+    cd threat-intel-dashboard
+
+2.	Crear y activar entorno virtual
+
+Ejecuta en la terminal:
+    ```bash
+    
+      python3 -m venv .venv
+      source .venv/bin/activate
+
+3.	Instalar dependencias
+    ```bash
+      pip install -r requirements.txt
+
+4.	Configurar variables de entorno
+
+Crear archivo .env a partir del ejemplo:
+    ```bash
+    
+      cp .env.example .env
+
+Luego abre el archivo .env y añade tus API keys:
+    ```bash
+    
+      ABUSEIPDB_API_KEY=tu_api_key
+      VT_API_KEY=tu_api_key
+
+5.	Ejecutar la aplicación (CLI)
+    ```bash
+    python main.py 8.8.8.8
+
+6.	Ejecutar el dashboard
+    ```bash
+    streamlit run dashboard.py
+
+## Uso (CLI)
+
+Analizar una IP desde terminal:
+    ```bash
+    
+    python main.py 8.8.8.8
+
+Ejemplo de salida:
+ 
+IP: 8.8.8.8
+País: United States
+ISP: Google LLC
+Abuse Score: 0
+VT Reputation: 0
+Riesgo: Bajo
+
+
+<img width="1093" height="837" alt="Captura de pantalla 2026-03-18 a las 19 25 52" src="https://github.com/user-attachments/assets/72d5dd42-6039-4edd-83c3-f81190f660b0" />
