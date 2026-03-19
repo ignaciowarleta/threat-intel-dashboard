@@ -46,28 +46,25 @@ El proyecto incluye tanto una **CLI** como un **dashboard interactivo** para ana
 
 2.	Crear y activar entorno virtual
 
-Ejecuta en la terminal:
+	Ejecuta en la terminal:
     ```bash
     
-      python3 -m venv .venv
-      source .venv/bin/activate
+    python3 -m venv .venv
+    source .venv/bin/activate
 
 3.	Instalar dependencias
     ```bash
-      pip install -r requirements.txt
+    pip install -r requirements.txt
 
 4.	Configurar variables de entorno
 
-Crear archivo .env a partir del ejemplo:
+	Crear archivo .env a partir del ejemplo. Luego abre el archivo .env y añade tus API keys:
     ```bash
+	
+    cp .env.example .env
     
-      cp .env.example .env
-
-Luego abre el archivo .env y añade tus API keys:
-    ```bash
-    
-      ABUSEIPDB_API_KEY=tu_api_key
-      VT_API_KEY=tu_api_key
+    ABUSEIPDB_API_KEY=tu_api_key
+    VT_API_KEY=tu_api_key
 
 5.	Ejecutar la aplicación (CLI)
     ```bash
@@ -128,9 +125,10 @@ Riesgo: Bajo
 Este proyecto está diseñado para integrarse con el repositorio: [Python HTTP Honeypot](https://github.com/ignaciowarleta/honeypot-http)
 
 Flujo de uso:
-	1.	El honeypot captura actividad y genera events.jsonl
-	2.	El dashboard carga ese fichero
-	3.	Se extraen IPs únicas
-	4.	Se enriquecen con fuentes de threat intelligence
-	5.	Se priorizan según riesgo
+
+1.	El honeypot captura actividad y genera events.jsonl
+2.	El dashboard carga ese fichero
+3.	Se extraen IPs únicas
+4.	Se enriquecen con fuentes de threat intelligence
+5.	Se priorizan según riesgo
 
