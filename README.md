@@ -1,5 +1,11 @@
 # Threat Intelligence Dashboard
 
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Cybersecurity](https://img.shields.io/badge/Cybersecurity-Threat%20Intelligence-black)
+![Blue Team](https://img.shields.io/badge/Blue%20Team-Lab-0A66C2)
+![OSINT](https://img.shields.io/badge/OSINT-IP%20Enrichment-purple)
+
 Herramienta en Python para enriquecimiento de direcciones IP mediante fuentes de *threat intelligence*, combinando reputación, geolocalización y scoring básico de riesgo.
 
 El proyecto incluye tanto una **CLI** como un **dashboard interactivo** para analizar actividad sospechosa de forma sencilla.
