@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+import matplotlib.pyplot as plt
 from utils.validator import is_valid_ip, classify_ip
 from utils.scorer import calculate_risk
 from utils.analyzer import analyze_ip
@@ -144,6 +144,43 @@ def results_to_dataframe(results: list[dict]) -> pd.DataFrame:
         df = df.sort_values(by=["Risk Score", "Abuse Score"], ascending=False, na_position="last")
     return df
 
+def show_honeypot_kpis(df: pd.DataFrame):
+    if df.empty:
+        return
+
+    total_ips = len(df)
+    critical_ips = int((df["Priority Label"] == "Crítica").sum())
+    high_ips = int((df["Priority Label"] == "Alta").sum())
+    credential_ips = int((df["Actividad principal"] == "Credential attempts").sum())
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("IPs analizadas", total_ips)
+    c2.metric("IPs críticas", critical_ips)
+    c3.metric("IPs altas", high_ips)
+    c4.metric("IPs con credenciales", credential_ips)
+
+
+def show_priority_chart(df: pd.DataFrame):
+    if df.empty:
+        return
+
+    counts = (
+        df["Priority Label"]
+        .value_counts()
+        .reindex(["Crítica", "Alta", "Media", "Baja"], fill_value=0)
+    )
+
+    fig, ax = plt.subplots(figsize=(5, 3))
+    ax.bar(counts.index, counts.values)
+    ax.set_title("Distribución de prioridades")
+    ax.set_xlabel("Nivel de prioridad")
+    ax.set_ylabel("Número de IPs")
+
+    plt.tight_layout()
+
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.pyplot(fig)
 
 mode = st.sidebar.radio(
     "Modo de análisis",
@@ -256,6 +293,12 @@ elif mode == "Logs del honeypot":
                     ascending=False,
                     na_position="last",
                 )
+
+            st.subheader("KPIs")
+            show_honeypot_kpis(df)
+
+            st.subheader("Distribución de prioridades")
+            show_priority_chart(df)
 
             st.subheader("Resultados priorizados")
             st.dataframe(df, use_container_width=True)
