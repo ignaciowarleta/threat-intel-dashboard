@@ -6,6 +6,7 @@
 ![Blue Team](https://img.shields.io/badge/Blue%20Team-Lab-0A66C2)
 ![OSINT](https://img.shields.io/badge/OSINT-IP%20Enrichment-purple)
 [![Integration](https://img.shields.io/badge/Integration-Honeypot-blue)](https://github.com/ignaciowarleta/honeypot-http)
+[![Deploy](https://img.shields.io/badge/Deploy-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://threat-intel-dashboard-6p2hhaj29f9qqnfoxdhoro.streamlit.app/)
 
 Herramienta en Python para enriquecimiento de direcciones IP mediante fuentes de *threat intelligence*, combinando reputación, geolocalización y scoring básico de riesgo.
 
